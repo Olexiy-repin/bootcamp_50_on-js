@@ -1,19 +1,14 @@
-const accordionBtnsEl = document.querySelectorAll('.js-accordion-btn');
+const accordionListEl = document.querySelector('.js-accordion-list');
 
 const onAccordionBtnClick = event => {
-  const accordionBtnEl = event.target;
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
 
-  const accordionPanelEl = accordionBtnEl.nextElementSibling;
+  const { target: accordionBtnEl } = event;
+  const panelEl = accordionBtnEl.nextElementSibling;
 
-  // if (accordionPanelEl.classList.contains('active')) {
-  //   accordionPanelEl.classList.remove('active');
-  // } else {
-  //   accordionPanelEl.classList.add('active');
-  // }
-
-  accordionPanelEl.classList.toggle('active');
+  panelEl.classList.toggle('active');
 };
 
-accordionBtnsEl.forEach(accordionBtn => {
-  accordionBtn.addEventListener('click', onAccordionBtnClick);
-});
+accordionListEl.addEventListener('click', onAccordionBtnClick);

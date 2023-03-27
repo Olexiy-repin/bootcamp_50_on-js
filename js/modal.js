@@ -26,5 +26,14 @@ const onDocumentKeyDown = event => {
   }
 };
 
+const onBackdropElClick = event => {
+  console.log(event.target);
+
+  if (event.target === event.currentTarget) {
+    closeModal();
+  }
+};
+
 modalOpenBtnEl.addEventListener('click', onModalOpenBtnElClick);
 modalCloseBtnEl.addEventListener('click', onModalCloseBtnElClick);
+backdropEl.addEventListener('click', onBackdropElClick);
